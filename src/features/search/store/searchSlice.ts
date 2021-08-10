@@ -27,7 +27,7 @@ export const fetchSearchResults = createAsyncThunk(
 );
 
 export const searchSlice = createSlice({
-  name: "counter",
+  name: "search",
   initialState,
   reducers: {},
   extraReducers: (builder) => {

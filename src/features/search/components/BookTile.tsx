@@ -12,6 +12,7 @@ import {
 
 export interface IBookTileProps {
   book: Book;
+  onClick: () => void;
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -22,7 +23,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export const BookTile: FC<IBookTileProps> = ({ book }) => {
+export const BookTile: FC<IBookTileProps> = ({ book, onClick }) => {
   const classes = useStyles();
   const [raised, setRaised] = useState(false);
   return (
@@ -30,6 +31,7 @@ export const BookTile: FC<IBookTileProps> = ({ book }) => {
       raised={raised}
       onMouseEnter={() => setRaised(true)}
       onMouseLeave={() => setRaised(false)}
+      onClick={onClick}
     >
       <CardMedia
         component="img"

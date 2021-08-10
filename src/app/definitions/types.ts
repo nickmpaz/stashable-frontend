@@ -10,4 +10,16 @@ export interface Book {
   title: string;
   description: string;
   thumbnail: string;
+  authors: Author[];
+  categories: Category[];
+}
+
+export interface Category {
+  id: number;
+  name: string;
+}
+
+export interface Author {
+  id: number;
+  name: string;
 }
