@@ -18,6 +18,7 @@ import {
 
 export interface IBookDetailsProps {
   book: Book;
+  onAddToCollection: () => void;
 }
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -34,7 +35,10 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   })
 );
-export const BookDetails: FC<IBookDetailsProps> = ({ book }) => {
+export const BookDetails: FC<IBookDetailsProps> = ({
+  book,
+  onAddToCollection,
+}) => {
   const styles = useStyles();
   return (
     <Container fixed maxWidth="md">
@@ -77,7 +81,11 @@ export const BookDetails: FC<IBookDetailsProps> = ({ book }) => {
                 {book.description}
               </Typography>
               <Box display="flex" justifyContent="flex-end" mt={2}>
-                <Button variant="contained" color="primary">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => onAddToCollection()}
+                >
                   Add to my collection
                 </Button>
               </Box>

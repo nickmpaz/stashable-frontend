@@ -3,12 +3,17 @@ import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import firebase from "firebase";
 
-import { useAppDispatch } from "../../../app/hooks/hooks";
-import { authenticate } from "../store/authSlice";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks/hooks";
+import {
+  selectInitialized,
+  setAuthenticated,
+  setInitialized,
+} from "../store/authSlice";
 
 export const AuthProvider: FC = ({ children }) => {
   const dispatch = useAppDispatch();
   const history = useHistory();
+  const initialized = useAppSelector(selectInitialized);
 
   const redirectIfUnauthenticated = (user: firebase.User | null) => {
     if (!user) {
@@ -20,12 +25,12 @@ export const AuthProvider: FC = ({ children }) => {
     const unregisterAuthObserver = firebase
       .auth()
       .onAuthStateChanged((user) => {
-        console.log({ user });
-        dispatch(authenticate(!!user));
+        dispatch(setAuthenticated(!!user));
+        dispatch(setInitialized(true));
         redirectIfUnauthenticated(user);
       });
     return () => unregisterAuthObserver();
   }, []);
 
-  return <>{children}</>;
+  return <>{initialized && children}</>;
 };

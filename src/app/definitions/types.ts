@@ -23,3 +23,19 @@ export interface Author {
   id: number;
   name: string;
 }
+
+export interface LibraryItem {
+  book: Book;
+  status: LibraryItemStatus;
+  isOwned: true;
+  rating: number;
+  review: string;
+}
+
+export enum LibraryItemStatus {
+  READING_LIST = "reading_list",
+  IN_PROGRESS = "in_progress",
+  FINISHED = "finished",
+  DID_NOT_FINISH = "did_not_finish",
+}
+
