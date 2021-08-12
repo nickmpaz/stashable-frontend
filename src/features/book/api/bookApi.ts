@@ -20,6 +20,9 @@ export const createLibraryItemRequest = (
   return api({
     method: "POST",
     url: LIBRARY,
+    data: {
+      bookId: id,
+    },
   });
 };
 

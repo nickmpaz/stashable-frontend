@@ -1,6 +1,6 @@
 import React from "react";
 import { useAppSelector } from "../../../app/hooks/hooks";
-import { LibraryItemCard } from "../components/LibraryItem";
+import { LibraryItemCard } from "../components/LibraryItemCard";
 import { selectLibraryItem } from "../store/bookSlice";
 
 export const LibraryItemContainer = () => {
