@@ -72,7 +72,7 @@ export const bookSlice = createSlice({
 export const {} = bookSlice.actions;
 
 export const selectSearchResults = (state: RootState) =>
-  state.search.searchResults.value;
+  state.book.searchResults.value;
 export const selectBook = (state: RootState) => state.book.book.value;
 
 export default bookSlice.reducer;

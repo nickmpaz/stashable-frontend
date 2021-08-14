@@ -2,7 +2,7 @@ import React, { ChangeEvent, KeyboardEvent } from "react";
 import { useState } from "react";
 import { useAppDispatch } from "../../../app/hooks/hooks";
 import { SearchBar } from "../components/SearchBar";
-import { fetchSearchResults } from "../../search/store/searchSlice";
+import { fetchSearchResults } from "../store/bookSlice";
 
 export const SearchBarContainer = () => {
   const [query, setQuery] = useState("");

@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { LibraryItem } from "../../../app/definitions/types";
+import { LibraryItem, LibraryItemUpdate } from "../../../app/definitions/types";
 import {
   Card,
   CardContent,
@@ -11,18 +11,19 @@ import {
   Button,
 } from "@material-ui/core";
 import { Rating } from "@material-ui/lab";
-import { useFormik } from "formik";
+import { FormikConfig, useFormik } from "formik";
 import { RadioChips } from "../../../app/components/RadioChips";
 import { useAppDispatch } from "../../../app/hooks/hooks";
 import { updateLibraryItem } from "../store/librarySlice";
 
 export interface ILibraryItemProps {
   libraryItem: LibraryItem;
+  // form: FormikConfig<LibraryItemUpdate>;
 }
 
 export const LibraryItemCard: FC<ILibraryItemProps> = ({ libraryItem }) => {
   const dispatch = useAppDispatch();
-  const formik = useFormik({
+  const formik = useFormik<LibraryItemUpdate>({
     initialValues: {
       rating: libraryItem.rating,
       review: libraryItem.review,
