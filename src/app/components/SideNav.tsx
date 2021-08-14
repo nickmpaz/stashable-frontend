@@ -21,7 +21,7 @@ export const SideNav: FC = () => {
         <ListItemIcon>
           <Box my={1}>
             <SearchIcon
-              color={location.pathname === "/search" ? "primary" : undefined}
+              color={location.pathname === SEARCH ? "primary" : undefined}
               fontSize="large"
             />
           </Box>
