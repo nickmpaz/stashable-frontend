@@ -1,9 +1,11 @@
-import React, { FC } from "react";
-import { LibraryItem, LibraryItemUpdate } from "../../../app/definitions/types";
+import React, { ChangeEvent, FC } from "react";
+import {
+  LibraryItemStatus,
+  LibraryItemUpdate,
+} from "../../../app/definitions/types";
 import {
   Card,
   CardContent,
-  Container,
   Grid,
   TextField,
   Box,
@@ -11,60 +13,48 @@ import {
   Button,
 } from "@material-ui/core";
 import { Rating } from "@material-ui/lab";
-import { FormikConfig, useFormik } from "formik";
+import { FormikProps } from "formik";
 import { RadioChips } from "../../../app/components/RadioChips";
-import { useAppDispatch } from "../../../app/hooks/hooks";
-import { updateLibraryItem } from "../store/librarySlice";
 
 export interface ILibraryItemProps {
-  libraryItem: LibraryItem;
-  // form: FormikConfig<LibraryItemUpdate>;
+  formik: FormikProps<LibraryItemUpdate>;
+  statusOptions: { [key: string]: LibraryItemStatus };
+  statusOnChange: (value: unknown) => void;
+  isOwnedOptions: { [key: string]: boolean };
+  isOwnedOnChange: (value: unknown) => void;
+  ratingOnChange: (event: ChangeEvent<{}>, value: number | null) => void;
 }
 
-export const LibraryItemCard: FC<ILibraryItemProps> = ({ libraryItem }) => {
-  const dispatch = useAppDispatch();
-  const formik = useFormik<LibraryItemUpdate>({
-    initialValues: {
-      rating: libraryItem.rating,
-      review: libraryItem.review,
-      status: libraryItem.status,
-      isOwned: libraryItem.isOwned,
-    },
-    onSubmit: (values) => {
-      console.log({ values });
-      dispatch(updateLibraryItem({ id: libraryItem.id, updates: values }));
-    },
-  });
+export const LibraryItemCard: FC<ILibraryItemProps> = ({
+  formik,
+  statusOptions,
+  statusOnChange,
+  isOwnedOptions,
+  isOwnedOnChange,
+  ratingOnChange,
+}) => {
   return (
     <Box mt={3}>
       <Card>
         <CardContent>
           <form onSubmit={formik.handleSubmit}>
-            {JSON.stringify(formik.values)}
             <Grid container>
               <Grid item lg={6} xs={12}>
                 <Typography gutterBottom variant="h6" component="h3">
                   Status
                 </Typography>
                 <RadioChips
-                  options={{
-                    "Want to read": "want_to_read",
-                    "In progress": "in_progress",
-                    Finished: "finished",
-                  }}
+                  options={statusOptions}
                   value={formik.values.status}
-                  onChange={(value) => formik.setFieldValue("status", value)}
+                  onChange={statusOnChange}
                 ></RadioChips>
                 <Typography gutterBottom variant="h6" component="h3">
                   Ownership
                 </Typography>
                 <RadioChips
-                  options={{
-                    "I own this book": true,
-                    "I don't own this book": false,
-                  }}
+                  options={isOwnedOptions}
                   value={formik.values.isOwned}
-                  onChange={(value) => formik.setFieldValue("isOwned", value)}
+                  onChange={isOwnedOnChange}
                 ></RadioChips>
               </Grid>
               <Grid item lg={6} xs={12}>
@@ -77,9 +67,7 @@ export const LibraryItemCard: FC<ILibraryItemProps> = ({ libraryItem }) => {
                     name="rating"
                     precision={0.5}
                     value={formik.values.rating}
-                    onChange={(event, value) => {
-                      formik.setFieldValue("rating", value);
-                    }}
+                    onChange={ratingOnChange}
                   />
                 </Box>
                 <Typography gutterBottom variant="h6" component="h3">

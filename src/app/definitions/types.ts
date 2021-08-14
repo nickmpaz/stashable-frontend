@@ -40,7 +40,7 @@ export interface LibraryItemUpdate {
 }
 
 export enum LibraryItemStatus {
-  READING_LIST = "reading_list",
+  WANT_TO_READ = "want_to_read",
   IN_PROGRESS = "in_progress",
   FINISHED = "finished",
   DID_NOT_FINISH = "did_not_finish",
