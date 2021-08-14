@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { GuardedRouteContainer } from "../../features/auth/containers/GuardedRouteContainer";
 import { LoginView } from "../../features/auth/views/LoginView";
 import { BOOK, LOGIN, SEARCH } from "../definitions/routes";
-import { SearchView } from "../../features/search/views/SearchView";
+import { SearchView } from "../views/SearchView";
 import { BookView } from "../../features/book/views/BookView";
 
 function App() {
