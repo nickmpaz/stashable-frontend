@@ -13,15 +13,13 @@ export const SearchBar: FC<ISearchBarProps> = ({
   value,
 }) => {
   return (
-    <Container fixed maxWidth="xl">
-      <TextField
-        label="Search"
-        variant="outlined"
-        fullWidth
-        value={value}
-        onChange={onChange}
-        onKeyDown={onKeyDown}
-      ></TextField>
-    </Container>
+    <TextField
+      label="Search"
+      variant="outlined"
+      fullWidth
+      value={value}
+      onChange={onChange}
+      onKeyDown={onKeyDown}
+    ></TextField>
   );
 };

@@ -51,7 +51,6 @@ export const BookDetails: FC<IBookDetailsProps> = ({
               src={book.thumbnail}
               title={book.title}
             ></CardMedia>
-            <CardContent>something</CardContent>
           </Card>
         </Grid>
         <Grid item lg={9} md={8} xs={12}>
