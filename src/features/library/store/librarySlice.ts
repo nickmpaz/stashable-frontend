@@ -8,6 +8,7 @@ import { RootState } from "../../../app/store/store";
 import {
   createLibraryItemRequest,
   fetchLibraryItemRequest,
+  fetchLibraryItemsRequest,
   updateLibraryItemRequest,
 } from "../api/libraryApi";
 
@@ -16,11 +17,19 @@ export interface LibraryState {
     value: LibraryItem | null;
     status: AsyncThunkStatus;
   };
+  libraryItems: {
+    value: LibraryItem[];
+    status: AsyncThunkStatus;
+  };
 }
 
 const initialState: LibraryState = {
   libraryItem: {
     value: null,
+    status: AsyncThunkStatus.Idle,
+  },
+  libraryItems: {
+    value: [],
     status: AsyncThunkStatus.Idle,
   },
 };
@@ -45,7 +54,14 @@ export const fetchLibraryItem = createAsyncThunk(
   "library/fetchLibraryItem",
   async (id: number) => {
     const response = await fetchLibraryItemRequest(id);
-    console.log({ response });
+    return response.data;
+  }
+);
+
+export const fetchLibraryItems = createAsyncThunk(
+  "library/fetchLibraryItems",
+  async () => {
+    const response = await fetchLibraryItemsRequest();
     return response.data;
   }
 );
@@ -85,6 +101,16 @@ export const librarySlice = createSlice({
       .addCase(updateLibraryItem.fulfilled, (state, action) => {
         state.libraryItem.status = AsyncThunkStatus.Idle;
         state.libraryItem.value = action.payload;
+      })
+      .addCase(fetchLibraryItems.pending, (state) => {
+        state.libraryItems.status = AsyncThunkStatus.Loading;
+      })
+      .addCase(fetchLibraryItems.rejected, (state) => {
+        state.libraryItems.status = AsyncThunkStatus.Failed;
+      })
+      .addCase(fetchLibraryItems.fulfilled, (state, action) => {
+        state.libraryItems.status = AsyncThunkStatus.Idle;
+        state.libraryItems.value = action.payload;
       });
   },
 });
@@ -93,5 +119,8 @@ export const {} = librarySlice.actions;
 
 export const selectLibraryItem = (state: RootState) =>
   state.library.libraryItem.value;
+
+export const selectLibraryItems = (state: RootState) =>
+  state.library.libraryItems.value;
 
 export default librarySlice.reducer;

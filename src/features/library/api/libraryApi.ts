@@ -38,3 +38,12 @@ export const fetchLibraryItemRequest = (
     url: FETCH_LIBRARY_ITEM(bookId),
   });
 };
+
+export const fetchLibraryItemsRequest = (): Promise<
+  AxiosResponse<LibraryItem[]>
+> => {
+  return api({
+    method: "GET",
+    url: LIBRARY,
+  });
+};

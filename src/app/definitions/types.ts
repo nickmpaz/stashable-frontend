@@ -24,7 +24,7 @@ export interface Author {
 }
 
 export interface LibraryItem {
-  // book: Book;
+  book: Book;
   id: number;
   status: LibraryItemStatus | null;
   isOwned: boolean | null;
