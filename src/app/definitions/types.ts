@@ -3,7 +3,6 @@ export enum AsyncThunkStatus {
   Loading,
   Failed,
 }
-
 export interface Book {
   id: string;
   externalId: string;
@@ -25,11 +24,19 @@ export interface Author {
 }
 
 export interface LibraryItem {
-  book: Book;
-  status: LibraryItemStatus;
-  isOwned: true;
-  rating: number;
-  review: string;
+  // book: Book;
+  id: number;
+  status: LibraryItemStatus | null;
+  isOwned: boolean | null;
+  rating: number | null;
+  review: string | null;
+}
+
+export interface LibraryItemUpdate {
+  status: LibraryItemStatus | null;
+  isOwned: boolean | null;
+  rating: number | null;
+  review: string | null;
 }
 
 export enum LibraryItemStatus {
@@ -38,4 +45,3 @@ export enum LibraryItemStatus {
   FINISHED = "finished",
   DID_NOT_FINISH = "did_not_finish",
 }
-

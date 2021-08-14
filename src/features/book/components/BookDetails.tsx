@@ -15,6 +15,7 @@ import {
   makeStyles,
   createStyles,
 } from "@material-ui/core";
+import { LibraryItemContainer } from "../containers/LibraryItemContainer";
 
 export interface IBookDetailsProps {
   book: Book;
@@ -23,7 +24,7 @@ export interface IBookDetailsProps {
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     bookDetailsCard: {
-      height: "100%",
+      // height: "100%",
     },
     cardContent: {
       height: "100%",
@@ -41,18 +42,19 @@ export const BookDetails: FC<IBookDetailsProps> = ({
 }) => {
   const styles = useStyles();
   return (
-    <Container fixed maxWidth="md">
+    <Container fixed maxWidth="lg">
       <Grid container spacing={3}>
-        <Grid item md={4} xs={12}>
+        <Grid item lg={3} md={4} xs={12}>
           <Card>
             <CardMedia
               component="img"
               src={book.thumbnail}
               title={book.title}
             ></CardMedia>
+            <CardContent>something</CardContent>
           </Card>
         </Grid>
-        <Grid item md={8} xs={12}>
+        <Grid item lg={9} md={8} xs={12}>
           <Card className={styles.bookDetailsCard}>
             <CardContent className={styles.cardContent}>
               <Typography gutterBottom variant="h4" component="h2">
@@ -91,6 +93,7 @@ export const BookDetails: FC<IBookDetailsProps> = ({
               </Box>
             </CardContent>
           </Card>
+          <LibraryItemContainer></LibraryItemContainer>
         </Grid>
       </Grid>
     </Container>
