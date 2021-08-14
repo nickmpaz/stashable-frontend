@@ -10,14 +10,15 @@ import { Box } from "@material-ui/core";
 import SettingsIcon from "@material-ui/icons/Settings";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import firebase from "firebase";
+import { LIBRARY, SEARCH, SETTINGS, SOCIAL } from "../definitions/routes";
 
 export const SideNav: FC = () => {
   const history = useHistory();
   const location = useLocation();
   return (
     <List>
-      <ListItem button>
-        <ListItemIcon onClick={() => history.push("/search")}>
+      <ListItem button onClick={() => history.push(SEARCH)}>
+        <ListItemIcon>
           <Box my={1}>
             <SearchIcon
               color={location.pathname === "/search" ? "primary" : undefined}
@@ -26,31 +27,31 @@ export const SideNav: FC = () => {
           </Box>
         </ListItemIcon>
       </ListItem>
-      <ListItem button>
-        <ListItemIcon onClick={() => history.push("/library")}>
+      <ListItem button onClick={() => history.push(LIBRARY)}>
+        <ListItemIcon>
           <Box my={1}>
             <LibraryBooksIcon
-              color={location.pathname === "/library" ? "primary" : undefined}
+              color={location.pathname === LIBRARY ? "primary" : undefined}
               fontSize="large"
             />
           </Box>
         </ListItemIcon>
       </ListItem>
-      <ListItem button>
-        <ListItemIcon onClick={() => history.push("/library")}>
+      <ListItem button onClick={() => history.push(SOCIAL)}>
+        <ListItemIcon>
           <Box my={1}>
             <PeopleIcon
-              color={location.pathname === "/social" ? "primary" : undefined}
+              color={location.pathname === SOCIAL ? "primary" : undefined}
               fontSize="large"
             />
           </Box>
         </ListItemIcon>
       </ListItem>
-      <ListItem button>
-        <ListItemIcon onClick={() => history.push("/settings")}>
+      <ListItem button onClick={() => history.push(SETTINGS)}>
+        <ListItemIcon>
           <Box my={1}>
             <SettingsIcon
-              color={location.pathname === "/settings" ? "primary" : undefined}
+              color={location.pathname === SETTINGS ? "primary" : undefined}
               fontSize="large"
             />
           </Box>
