@@ -2,7 +2,7 @@ import React from "react";
 import { AuthProvider } from "../../features/auth/providers/AuthProvider";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { GuardedRouteContainer } from "../../features/auth/containers/GuardedRouteContainer";
-import { LoginView } from "../../features/auth/views/LoginView";
+import { LoginView } from "../views/LoginView";
 import { BOOK, LOGIN, SEARCH } from "../definitions/routes";
 import { SearchView } from "../views/SearchView";
 import { BookView } from "../views/BookView";

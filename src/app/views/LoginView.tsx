@@ -1,6 +1,6 @@
 import React, { FC } from "react";
-import { LoginButton } from "../components/LoginButton";
-import { LogoutButton } from "../components/LogoutButton";
+import { LoginButton } from "../../features/auth/components/LoginButton";
+import { LogoutButton } from "../../features/auth/components/LogoutButton";
 
 export const LoginView = () => {
   return (
