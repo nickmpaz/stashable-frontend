@@ -9,9 +9,9 @@ export interface IBookDisplayProps {
 
 export const BookDisplay: FC<IBookDisplayProps> = ({ books }) => {
   return (
-    <Box pt={10}>
+    <Box pt={8}>
       <Container fixed maxWidth="lg">
-        <Grid container spacing={10}>
+        <Grid container spacing={8}>
           {books.map((searchResult) => {
             return (
               <Grid item lg={3} md={3} sm={6} xs={12}>

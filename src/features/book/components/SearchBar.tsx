@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FC, KeyboardEvent } from "react";
-import { TextField } from "@material-ui/core";
+import { Container, TextField } from "@material-ui/core";
 
 export interface ISearchBarProps {
   value: string;
@@ -13,13 +13,15 @@ export const SearchBar: FC<ISearchBarProps> = ({
   value,
 }) => {
   return (
-    <TextField
-      label="Search"
-      variant="outlined"
-      fullWidth
-      value={value}
-      onChange={onChange}
-      onKeyDown={onKeyDown}
-    ></TextField>
+    <Container fixed maxWidth="xl">
+      <TextField
+        label="Search"
+        variant="outlined"
+        fullWidth
+        value={value}
+        onChange={onChange}
+        onKeyDown={onKeyDown}
+      ></TextField>
+    </Container>
   );
 };
