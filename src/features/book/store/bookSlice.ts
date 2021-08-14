@@ -1,35 +1,17 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import {
-  AsyncThunkStatus,
-  Book,
-  LibraryItem,
-  LibraryItemUpdate,
-} from "../../../app/definitions/types";
+import { AsyncThunkStatus, Book } from "../../../app/definitions/types";
 import { RootState } from "../../../app/store/store";
-import {
-  createLibraryItemRequest,
-  fetchBookRequest,
-  fetchLibraryItemRequest,
-  updateLibraryItemRequest,
-} from "../api/bookApi";
+import { fetchBookRequest } from "../api/bookApi";
 
 export interface BookState {
   book: {
     value: Book | null;
     status: AsyncThunkStatus;
   };
-  libraryItem: {
-    value: LibraryItem | null;
-    status: AsyncThunkStatus;
-  };
 }
 
 const initialState: BookState = {
   book: {
-    value: null,
-    status: AsyncThunkStatus.Idle,
-  },
-  libraryItem: {
     value: null,
     status: AsyncThunkStatus.Idle,
   },
@@ -42,32 +24,6 @@ export const fetchBook = createAsyncThunk(
     return response.data;
   }
 );
-
-export const createLibraryItem = createAsyncThunk(
-  "book/createLibraryItem",
-  async (id: number) => {
-    const response = await createLibraryItemRequest(id);
-    return response.data;
-  }
-);
-
-export const updateLibraryItem = createAsyncThunk(
-  "book/updateLibraryItem",
-  async ({ id, updates }: { id: number; updates: LibraryItemUpdate }) => {
-    const response = await updateLibraryItemRequest(id, updates);
-    return response.data;
-  }
-);
-
-export const fetchLibraryItem = createAsyncThunk(
-  "book/fetchLibraryItem",
-  async (id: number) => {
-    const response = await fetchLibraryItemRequest(id);
-    console.log({ response });
-    return response.data;
-  }
-);
-
 export const bookSlice = createSlice({
   name: "book",
   initialState,
@@ -83,36 +39,6 @@ export const bookSlice = createSlice({
       .addCase(fetchBook.fulfilled, (state, action) => {
         state.book.status = AsyncThunkStatus.Idle;
         state.book.value = action.payload;
-      })
-      .addCase(createLibraryItem.pending, (state) => {
-        state.libraryItem.status = AsyncThunkStatus.Loading;
-      })
-      .addCase(createLibraryItem.rejected, (state) => {
-        state.libraryItem.status = AsyncThunkStatus.Failed;
-      })
-      .addCase(createLibraryItem.fulfilled, (state, action) => {
-        state.libraryItem.status = AsyncThunkStatus.Idle;
-        state.libraryItem.value = action.payload;
-      })
-      .addCase(fetchLibraryItem.pending, (state) => {
-        state.libraryItem.status = AsyncThunkStatus.Loading;
-      })
-      .addCase(fetchLibraryItem.rejected, (state) => {
-        state.libraryItem.status = AsyncThunkStatus.Failed;
-      })
-      .addCase(fetchLibraryItem.fulfilled, (state, action) => {
-        state.libraryItem.status = AsyncThunkStatus.Idle;
-        state.libraryItem.value = action.payload;
-      })
-      .addCase(updateLibraryItem.pending, (state) => {
-        state.libraryItem.status = AsyncThunkStatus.Loading;
-      })
-      .addCase(updateLibraryItem.rejected, (state) => {
-        state.libraryItem.status = AsyncThunkStatus.Failed;
-      })
-      .addCase(updateLibraryItem.fulfilled, (state, action) => {
-        state.libraryItem.status = AsyncThunkStatus.Idle;
-        state.libraryItem.value = action.payload;
       });
   },
 });
@@ -120,7 +46,5 @@ export const bookSlice = createSlice({
 export const {} = bookSlice.actions;
 
 export const selectBook = (state: RootState) => state.book.book.value;
-export const selectLibraryItem = (state: RootState) =>
-  state.book.libraryItem.value;
 
 export default bookSlice.reducer;

@@ -14,7 +14,7 @@ import { Rating } from "@material-ui/lab";
 import { useFormik } from "formik";
 import { RadioChips } from "../../../app/components/RadioChips";
 import { useAppDispatch } from "../../../app/hooks/hooks";
-import { updateLibraryItem } from "../store/bookSlice";
+import { updateLibraryItem } from "../store/librarySlice";
 
 export interface ILibraryItemProps {
   libraryItem: LibraryItem;

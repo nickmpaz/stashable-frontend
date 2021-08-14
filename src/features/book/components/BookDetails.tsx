@@ -15,7 +15,7 @@ import {
   makeStyles,
   createStyles,
 } from "@material-ui/core";
-import { LibraryItemContainer } from "../containers/LibraryItemContainer";
+import { LibraryItemContainer } from "../../library/containers/LibraryItemContainer";
 
 export interface IBookDetailsProps {
   book: Book;

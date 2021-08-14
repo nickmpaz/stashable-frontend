@@ -5,11 +5,7 @@ import {
   LIBRARY,
   UPDATE_LIBRARY_ITEM,
 } from "../../../app/definitions/apiRoutes";
-import {
-  Book,
-  LibraryItem,
-  LibraryItemUpdate,
-} from "../../../app/definitions/types";
+import { LibraryItem, LibraryItemUpdate } from "../../../app/definitions/types";
 
 export const createLibraryItemRequest = (
   id: number
