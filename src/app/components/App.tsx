@@ -5,7 +5,7 @@ import { GuardedRouteContainer } from "../../features/auth/containers/GuardedRou
 import { LoginView } from "../../features/auth/views/LoginView";
 import { BOOK, LOGIN, SEARCH } from "../definitions/routes";
 import { SearchView } from "../views/SearchView";
-import { BookView } from "../../features/book/views/BookView";
+import { BookView } from "../views/BookView";
 
 function App() {
   return (

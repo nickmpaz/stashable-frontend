@@ -1,6 +1,6 @@
 import React from "react";
-import { Layout } from "../../../app/components/Layout";
-import { BookDetailsContainer } from "../containers/BookDetailsContainer";
+import { Layout } from "../components/Layout";
+import { BookDetailsContainer } from "../../features/book/containers/BookDetailsContainer";
 
 export const BookView = () => {
   return (
