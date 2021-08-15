@@ -1,13 +1,13 @@
 import firebase from "firebase";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA2drXARBG3BZAIoxzfnZ9SDZA-goV3RhQ",
-  authDomain: "stashable.firebaseapp.com",
-  projectId: "stashable",
-  storageBucket: "stashable.appspot.com",
-  messagingSenderId: "815780488842",
-  appId: "1:815780488842:web:067b869c2c3fcc24642f73",
-  measurementId: "G-N8DRQC9C5J",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 
 firebase.initializeApp(firebaseConfig);
