@@ -115,8 +115,6 @@ export const librarySlice = createSlice({
   },
 });
 
-export const {} = librarySlice.actions;
-
 export const selectLibraryItem = (state: RootState) =>
   state.library.libraryItem.value;
 

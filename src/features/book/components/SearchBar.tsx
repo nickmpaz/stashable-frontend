@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FC, KeyboardEvent } from "react";
-import { Container, TextField } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
 
 export interface ISearchBarProps {
   value: string;

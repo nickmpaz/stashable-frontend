@@ -1,20 +1,15 @@
+import React, { ChangeEvent, FC } from "react";
 import {
   Box,
   Card,
-  CardContent,
   Container,
   Grid,
   TextField,
   Typography,
 } from "@material-ui/core";
 import { Rating } from "@material-ui/lab";
-import React, { ChangeEvent, FC } from "react";
 import { RadioChips } from "../../../app/components/RadioChips";
-import {
-  Book,
-  LibraryItem,
-  LibraryItemStatus,
-} from "../../../app/definitions/types";
+import { Book, LibraryItemStatus } from "../../../app/definitions/types";
 import { BookDisplay } from "../../book/components/BookDisplay";
 
 export interface LibraryProps {

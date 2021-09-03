@@ -24,7 +24,7 @@ export const LibraryContainer = () => {
 
   useEffect(() => {
     dispatch(fetchLibraryItems());
-  }, []);
+  }, [dispatch]);
 
   const statusOptions = {
     "Want to read": LibraryItemStatus.WANT_TO_READ,

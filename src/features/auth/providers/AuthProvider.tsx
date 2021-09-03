@@ -30,7 +30,7 @@ export const AuthProvider: FC = ({ children }) => {
         redirectIfUnauthenticated(user);
       });
     return () => unregisterAuthObserver();
-  }, []);
+  });
 
   return <>{initialized && children}</>;
 };

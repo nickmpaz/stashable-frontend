@@ -1,5 +1,5 @@
+import React from "react";
 import { Box, Chip } from "@material-ui/core";
-import React, { FC } from "react";
 
 export interface RadioChipsProps<T> {
   options: { [key: string]: T };

@@ -11,7 +11,7 @@ import { SideNav } from "./SideNav";
 import { Box } from "@material-ui/core";
 import { useMediaQuery } from "@material-ui/core";
 import { BottomNav } from "./BottomNav";
-import { BOOK, LIBRARY, SEARCH, SETTINGS } from "../definitions/routes";
+import { LIBRARY, SEARCH, SETTINGS } from "../definitions/routes";
 import SearchIcon from "@material-ui/icons/Search";
 import LibraryBooksIcon from "@material-ui/icons/LibraryBooks";
 import PeopleIcon from "@material-ui/icons/People";

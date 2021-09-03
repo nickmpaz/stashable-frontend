@@ -17,7 +17,7 @@ export const BookDetailsContainer = () => {
   useEffect(() => {
     dispatch(fetchBook(+bookId));
     dispatch(fetchLibraryItem(+bookId));
-  }, []);
+  }, [dispatch, bookId]);
 
   return (
     <>
