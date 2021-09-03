@@ -7,14 +7,18 @@ import { Provider } from "react-redux";
 import * as serviceWorker from "./serviceWorker";
 
 import "./app/utils/firebase";
+import { ThemeProvider } from "@material-ui/core";
+import { theme } from "./app/utils/theme";
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
     </Provider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change

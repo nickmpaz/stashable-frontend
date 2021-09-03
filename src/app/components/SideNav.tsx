@@ -8,8 +8,6 @@ import SearchIcon from "@material-ui/icons/Search";
 import PeopleIcon from "@material-ui/icons/People";
 import { Box } from "@material-ui/core";
 import SettingsIcon from "@material-ui/icons/Settings";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import firebase from "firebase";
 import { LIBRARY, SEARCH, SETTINGS, SOCIAL } from "../definitions/routes";
 
 export const SideNav: FC = () => {
@@ -54,13 +52,6 @@ export const SideNav: FC = () => {
               color={location.pathname === SETTINGS ? "primary" : undefined}
               fontSize="large"
             />
-          </Box>
-        </ListItemIcon>
-      </ListItem>
-      <ListItem button>
-        <ListItemIcon onClick={() => firebase.auth().signOut()}>
-          <Box my={1}>
-            <ExitToAppIcon fontSize="large" />
           </Box>
         </ListItemIcon>
       </ListItem>

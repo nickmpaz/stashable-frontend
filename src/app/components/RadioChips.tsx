@@ -1,17 +1,17 @@
 import { Box, Chip } from "@material-ui/core";
 import React, { FC } from "react";
 
-export interface RadioChipsProps {
-  options: { [key: string]: unknown };
-  value: unknown;
-  onChange: (value: unknown) => void;
+export interface RadioChipsProps<T> {
+  options: { [key: string]: T };
+  value: T | null;
+  onChange: (value: T | null) => void;
 }
 
-export const RadioChips: FC<RadioChipsProps> = ({
+export const RadioChips = <T extends unknown>({
   options,
   value,
   onChange,
-}) => {
+}: RadioChipsProps<T>) => {
   return (
     <Box display="flex" mb={2}>
       {Object.keys(options).map((key) => {

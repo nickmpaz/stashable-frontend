@@ -5,6 +5,7 @@ import {
   Container,
   Grid,
   TextField,
+  Typography,
 } from "@material-ui/core";
 import { Rating } from "@material-ui/lab";
 import React, { ChangeEvent, FC } from "react";
@@ -55,41 +56,34 @@ export const Library: FC<LibraryProps> = ({
       <Box pt={8}>
         <Container fixed maxWidth="lg">
           <Card>
-            <CardContent>
+            <Box mt={2} mx={2}>
               <Grid container>
-                <Grid item xs={4}>
-                  <Box display="flex" justifyContent="center">
-                    <RadioChips
-                      options={statusOptions}
-                      value={statusFilter}
-                      //@ts-ignore
-                      onChange={(value) => setStatusFilter(value)}
-                    ></RadioChips>
-                  </Box>
+                <Grid item xs={6}>
+                  <Typography variant="h6" gutterBottom>
+                    Status
+                  </Typography>
+                  <RadioChips
+                    options={statusOptions}
+                    value={statusFilter}
+                    onChange={(value) => setStatusFilter(value)}
+                  ></RadioChips>
+                  <RadioChips
+                    options={isOwnedOptions}
+                    value={isOwnedFilter}
+                    onChange={(value) => setIsOwnedFilter(value)}
+                  ></RadioChips>
                 </Grid>
-                <Grid item xs={4}>
-                  <Box display="flex" justifyContent="center">
-                    <RadioChips
-                      options={isOwnedOptions}
-                      value={isOwnedFilter}
-                      //@ts-ignore
-                      onChange={(value) => setIsOwnedFilter(value)}
-                    ></RadioChips>
-                  </Box>
-                </Grid>
-                <Grid item xs={4}>
-                  <Box display="flex" justifyContent="center">
-                    <Rating
-                      id="rating"
-                      name="rating"
-                      precision={0.5}
-                      value={ratingFilter}
-                      onChange={(event, value) => setRatingFilter(value)}
-                    />
-                  </Box>
+                <Grid item xs={6}>
+                  <Rating
+                    id="rating"
+                    name="rating"
+                    precision={0.5}
+                    value={ratingFilter}
+                    onChange={(event, value) => setRatingFilter(value)}
+                  />
                 </Grid>
               </Grid>
-            </CardContent>
+            </Box>
           </Card>
         </Container>
       </Box>

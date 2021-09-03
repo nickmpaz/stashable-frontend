@@ -8,14 +8,14 @@ import {
 import Drawer from "@material-ui/core/Drawer";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { SideNav } from "./SideNav";
-import {
-  AppBar,
-  BottomNavigation,
-  BottomNavigationAction,
-  Box,
-} from "@material-ui/core";
+import { Box } from "@material-ui/core";
 import { useMediaQuery } from "@material-ui/core";
-import FavoriteIcon from "@material-ui/icons/Favorite";
+import { BottomNav } from "./BottomNav";
+import { BOOK, LIBRARY, SEARCH, SETTINGS } from "../definitions/routes";
+import SearchIcon from "@material-ui/icons/Search";
+import LibraryBooksIcon from "@material-ui/icons/LibraryBooks";
+import PeopleIcon from "@material-ui/icons/People";
+import SettingsIcon from "@material-ui/icons/Settings";
 
 const drawerWidth = 16 + 35 + 16;
 
@@ -41,10 +41,6 @@ const useStyles = makeStyles((theme: Theme) =>
     content: {
       flexGrow: 1,
     },
-    bottomBar: {
-      top: "auto",
-      bottom: 0,
-    },
   })
 );
 
@@ -52,6 +48,29 @@ export const Layout: FC = ({ children }) => {
   const classes = useStyles();
   const theme = useTheme();
   const smallDevice = useMediaQuery(theme.breakpoints.down("sm"));
+
+  const navOptions = [
+    {
+      label: "Search",
+      route: SEARCH,
+      icon: <SearchIcon />,
+    },
+    {
+      label: "Library",
+      route: LIBRARY,
+      icon: <LibraryBooksIcon />,
+    },
+    {
+      label: "Social",
+      route: LIBRARY,
+      icon: <PeopleIcon />,
+    },
+    {
+      label: "Settings",
+      route: SETTINGS,
+      icon: <SettingsIcon />,
+    },
+  ];
 
   return (
     <div
@@ -75,17 +94,7 @@ export const Layout: FC = ({ children }) => {
         <main className={classes.content}>{children}</main>
       </Box>
 
-      {smallDevice && (
-        <AppBar position="sticky" color="primary" className={classes.bottomBar}>
-          <BottomNavigation>
-            <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-            <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-            <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-            <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-            <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-          </BottomNavigation>
-        </AppBar>
-      )}
+      {smallDevice && <BottomNav navOptions={navOptions}></BottomNav>}
     </div>
   );
 };
