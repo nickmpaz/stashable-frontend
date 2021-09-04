@@ -8,6 +8,6 @@ export const api = async (config: AxiosRequestConfig) => {
   return axios({
     ...config,
     baseURL: API_BASE_URL,
-    headers: { Authorization: idToken },
+    headers: { idToken },
   });
 };
